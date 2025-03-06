@@ -4,21 +4,22 @@ from selenium.webdriver.common.by import By
 import pyperclip
 import time
 
-from selenium.common.exceptions import NoSuchElementException, WebDriverException
+from selenium.common.exceptions import NoSuchElementException
 
-i = 0
-while i < 3468:
+BROWSER = webdriver.Chrome()
+CIADS = 0
+
+while CIADS < 3468:
+    pyautogui.click(x=1205, y=1059)
     try:
-        # copy data in excel sheet
-        pyautogui.click(x=1205, y=1059)
         pyautogui.click(x=149, y=269)
         pyautogui.click(x=252, y=198)
         pyautogui.hotkey("ctrl", "a")
         pyautogui.hotkey("ctrl", "c")
         time.sleep(1)
         CIAD = pyperclip.paste()
-
-        BROWSER = webdriver.Chrome()
+        
+        pyautogui.click(x=1273, y=1054)
         BROWSER.get("https://pergamum.anac.gov.br/")
         BROWSER.maximize_window()
         time.sleep(5)
@@ -30,15 +31,20 @@ while i < 3468:
             date = element.text
             pyperclip.copy(date)
         except NoSuchElementException:
-            raise NoSuchElementException("Tthere are no ordinances for the specified CIAD")
+            error_message = "There are no ordinances for the specified CIAD"
+            pyperclip.copy(error_message)
         
         pyautogui.click(x=1205, y=1059)
-        pyautogui.click(x=1483, y=269)
+        time.sleep(1)
+        pyautogui.click(x=1318, y=269)
+        time.sleep(1)
         pyautogui.click(x=252, y=198)
+        time.sleep(1)
         pyautogui.hotkey("ctrl", "v")
-        pyautogui.click(x=1911, y=970)
+        time.sleep(1)
+        pyautogui.click(x=1910, y=972)
 
     except NoSuchElementException as e:
         print(f"Selenium error: {e}")
     
-    i += 1
+    CIADS += 1
