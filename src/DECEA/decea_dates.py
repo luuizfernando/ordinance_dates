@@ -8,8 +8,7 @@ time.sleep(1)
 CIADS = 0
 
 pyautogui.click(x=1270, y=1059)
-while CIADS < 11:
-    
+while CIADS < 3468:
     pyautogui.click(x=149, y=269)
     time.sleep(.5)
     pyautogui.click(x=252, y=198)
