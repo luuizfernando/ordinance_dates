@@ -10,7 +10,7 @@ BROWSER = webdriver.Chrome()
 BROWSER.maximize_window()
 CIADS = 0
 
-pyautogui.click(x=1205, y=1059)
+pyautogui.click(x=1224, y=1058)
 while CIADS < 3468:
     try:
         pyautogui.click(x=149, y=269)
@@ -34,9 +34,9 @@ while CIADS < 3468:
             error_message = "There are no ordinances for the specified CIAD"
             pyperclip.copy(error_message)
         
-        pyautogui.click(x=1205, y=1059)
+        pyautogui.click(x=1224, y=1058)
         time.sleep(1)
-        pyautogui.click(x=1318, y=269)
+        pyautogui.click(x=1488, y=269)
         time.sleep(1)
         pyautogui.click(x=252, y=198)
         time.sleep(1)
